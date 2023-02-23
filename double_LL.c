@@ -23,25 +23,42 @@ int main()
 }
 void create(int n)
 {
-    int i;
     struct node *newnode;
-    for(i=0;i<n;i++)
+    int data,i;
+    if(n>=1)
     {
-        newnode=(struct node*)malloc(sizeof(struct node));
-        printf("Enter data for node %d: ",i+1);
-        scanf("%d",&newnode->data);
-        newnode->next=NULL;
-        newnode->prev=NULL;
-        if(head==NULL)
+        head=(struct node*)malloc(sizeof(struct node));
+        if(head!=NULL)
         {
-            head=newnode;
-            tail=newnode;
+            printf("Enter data of node 1: ");
+            scanf("%d",&data);
+            head->data=data;
+            head->next=NULL;
+            head->prev=NULL;
+            tail=head;
+            for(i=2;i<=n;i++)
+            {
+                newnode=(struct node*)malloc(sizeof(struct node));
+                if(newnode!=NULL)
+                {
+                    printf("Enter data of node %d: ",i);
+                    scanf("%d",&data);
+                    newnode->data=data;
+                    newnode->next=NULL;
+                    newnode->prev=tail;
+                    tail->next=newnode;
+                    tail=newnode;
+                }
+                else
+                {
+                    printf("Unable to allocate memory.");
+                    break;
+                }
+            }
         }
         else
         {
-            tail->next=newnode;
-            newnode->prev=tail;
-            tail=newnode;
+            printf("Unable to allocate memory.");
         }
     }
 }
