@@ -135,7 +135,6 @@ void insertNodeAtEnd(int data)
     temp -> next = newNode;
 }
 void insertNodeAtMiddle(int data, int position)
-//ALSO TRY USING THE AFTER VARIABLE AND INSERT BEFORE
 {
     struct Node *newNode, *temp;
     int i;
